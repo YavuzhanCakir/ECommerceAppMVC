@@ -1,0 +1,100 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün Ekleme</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .btn-custom {
+            background-color: #3498db;
+            color: white;
+            border: none;
+        }
+
+            .btn-custom:hover {
+                background-color: #2980b9;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Ürün Ekleme Formu
+            </div>
+            <div class="card-body">
+                <form asp-action="AddProduct" method="post" enctype="multipart/form-data">
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Ürün Başlığı</label>
+                        <input type="text" class="form-control" id="title" name="Title" placeholder="Ürün başlığını girin" required>
+                    </div>
+
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Ürün Adı</label>
+                        <input type="text" class="form-control" id="name" name="Name" placeholder="Ürün adını girin" required>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Ürün Açıklaması</label>
+                        <textarea class="form-control" id="description" name="Description" rows="3" placeholder="Ürün açıklamasını girin" required></textarea>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Fiyat</label>
+                        <input type="number" class="form-control" id="price" name="Price" placeholder="Ürün fiyatını girin" required>
+                    </div>
+
+                    <!-- Image File -->
+                    <div class="mb-3">
+                        <label for="imageFile" class="form-label">Ürün Resmi</label>
+                        <input type="file" class="form-control" id="imageFile" name="ImageFile" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-custom">Ürünü Ekle</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+    

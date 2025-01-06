@@ -1,0 +1,195 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.gradient-custom-3 {
+    /* fallback for old browsers */
+    background: #84fab0;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+}
+
+.gradient-custom-4 {
+    /* fallback for old browsers */
+    background: #84fab0;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+}
+
+<style >
+/* Navbar Arka Plan Rengi ve Gölge Efekti */
+.navbar {
+    background-color: #3498db; /* Mavi arka plan */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Linkler için beyaz yazý rengi */
+.navbar .nav-link {
+    color: #fff !important;
+}
+
+    /* Link Hover Durumu */
+    .navbar .nav-link:hover {
+        background-color: #9c9c9c; /* Arka planý gri yap */
+        color: #ffffff !important; /* Yazý rengini beyaz yap */
+    }
+
+/* Mobile View için Hamburger Icon Renkleri */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Sað ve Sol Menüleri Ayýrma */
+.navbar-collapse {
+    justify-content: space-between;
+}
+
+@media (min-width: 1025px) {
+    .h-custom {
+        height: 100vh !important;
+    }
+}
+
+.number-input input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.number-input input[type=number]::-webkit-inner-spin-button,
+.number-input input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.number-input button {
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+}
+
+    .number-input button:before,
+    .number-input button:after {
+        display: inline-block;
+        position: absolute;
+        content: '';
+        height: 2px;
+        transform: translate(-50%, -50%);
+    }
+
+    .number-input button.plus:after {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+.number-input input[type=number] {
+    text-align: center;
+}
+
+.number-input.number-input {
+    border: 1px solid #ced4da;
+    width: 10rem;
+    border-radius: .25rem;
+}
+
+    .number-input.number-input button {
+        width: 2.6rem;
+        height: .7rem;
+    }
+
+        .number-input.number-input button.minus {
+            padding-left: 10px;
+        }
+
+        .number-input.number-input button:before,
+        .number-input.number-input button:after {
+            width: .7rem;
+            background-color: #495057;
+        }
+
+    .number-input.number-input input[type=number] {
+        max-width: 4rem;
+        padding: .5rem;
+        border: 1px solid #ced4da;
+        border-width: 0 1px;
+        font-size: 1rem;
+        height: 2rem;
+        color: #495057;
+    }
+
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance: none) and (stroke-color:transparent) {
+
+        .number-input.def-number-input.safari_only button:before,
+        .number-input.def-number-input.safari_only button:after {
+            margin-top: -.3rem;
+        }
+    }
+}
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #e8e8e8;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: #e8e8e8;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #e8e8e8;
+}
+
+.custom-btn {
+    background-color: #9A616D !important; /* Arka plan rengi */
+    border-color: #9A616D !important; /* Sýnýr rengi */
+    color: white;
+}
+
+.custom-btn2 {
+    background-color: #9A616D;
+    color: white; /* Yazý rengini beyaz yapmak için */
+    border: none; /* Dýþ kenarlýk kaldýrmak isterseniz */
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -1px; /* Sepet simgesinin üstüne taþý */
+    right: -1px; /* Sepetin sað üst köþesine taþý */
+    background-color: cornflowerblue; /* Kýrmýzý bir arka plan, istediðiniz renge ayarlayabilirsiniz */
+    color: white; /* Sayý rengini beyaz yap */
+    border-radius: 50%; /* Yuvarlak þekil */
+    padding: 2px 6px; /* Sayýnýn çevresindeki boþluk */
+    font-size: 0.75rem; /* Boyutunu küçült */
+    font-weight: bold;
+}
+
+
+
+</style >

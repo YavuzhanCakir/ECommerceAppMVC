@@ -1,0 +1,11 @@
+﻿@model int
+
+<li class="nav-item cart-icon">
+    <a class="nav-link text-white" asp-area="" asp-controller="Cart" asp-action="Index">
+        🛒 Sepet
+        @if (Model > 0)
+        {
+            <span class="badge cart-count">@Model</span> <!-- CSS sınıfını ekleyin -->
+        }
+    </a>
+</li>

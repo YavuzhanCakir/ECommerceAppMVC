@@ -1,0 +1,184 @@
+﻿@using ECommerceApp.Models
+@model List<ProductModel>
+
+<style>
+    .card {
+        min-height: 400px; /* Kart yüksekliğini sabitle */
+    }
+
+    .card-img-top {
+        height: 400px; /* Resimlerin yüksekliği */
+        object-fit: cover; /* Resimleri orantılı kırparak sığdır */
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Kart içeriğini eşit şekilde yayar */
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: flex-start; /* Butonları sola hizala */
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            @foreach (var product in Model)
+            {
+                <div class="col-md-8 col-lg-6 col-xl-4 mb-4">
+                    <div class="card text-black">
+                        <img src="@product.Image" class="card-img-top" alt="Product Image" />
+                        <div class="card-body">
+                            <div class="text-center">
+                                <h5 class="card-title">@product.Title</h5>
+                                <p class="text-muted mb-4">@product.Description</p>
+                            </div>
+                            <div>
+                                <div class="d-flex justify-content-between">
+                                    <span>@product.Name</span><span>$@product.Price</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <div class="btn-container mt-3">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <button type="button" class="btn custom-btn4" data-bs-toggle="modal" data-bs-target="#editProductModal-@product.Id">
+                                            <i class="fas fa-edit"></i>
+                                        </button>   
+                                    }
+                                </div>
+
+                                <div class="text-center mt-3">
+                                    <form asp-action="AddToCart" method="post">
+                                        <input type="hidden" name="id" value="@product.Id" />
+                                        <button type="submit" class="btn custom-btn2">Add to Cart</button>
+                                    </form>
+                                </div>
+
+                                <div class="btn-container mt-3">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <form asp-action="Delete" method="post">
+                                            <input type="hidden" name="id" value="@product.Id" />
+                                            <button type="submit" class="btn custom-btn5">
+                                                <i class="fas fa-trash-alt"></i> <!-- Çöp kutusu simgesi -->
+                                            </button>
+                                        </form>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="editProductModal-@product.Id" tabindex="-1" aria-labelledby="editProductModalLabel-@product.Id" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content rounded-3 shadow border-0">
+                            <div class="modal-header custom-modal-header text-white">
+                                <h5 class="modal-title" id="editProductModalLabel-@product.Id">Ürün Düzenle - @product.Title</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="Id" value="@product.Id" />
+
+                                    <div class="mb-3">
+                                        <label for="Title" class="form-label">Başlık</label>
+                                        <input type="text" name="Title" class="form-control" value="@product.Title" placeholder="Ürün başlığını girin" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="Name" class="form-label">Ad</label>
+                                        <input type="text" name="Name" class="form-control" value="@product.Name" placeholder="Ürün adını girin" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="Description" class="form-label">Açıklama</label>
+                                        <textarea name="Description" class="form-control" rows="3" placeholder="Ürün açıklamasını girin">@product.Description</textarea>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="Price" class="form-label">Fiyat</label>
+                                        <input type="text" name="Price" class="form-control" value="@product.Price" placeholder="Fiyatı girin" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="ImageFile" class="form-label">Ürün Resmi</label>
+                                        <input type="file" class="form-control" id="ImageFile" name="ImageFile" />
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" class="btn custom-btn3 btn-lg">Kaydet</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ek CSS -->
+                <style>
+                    .modal-header {
+                        background-color: #007bff; /* Bootstrap birincil rengi */
+                    }
+
+                    .modal-title {
+                        font-weight: bold;
+                    }
+
+                    .form-control {
+                        border-radius: 0.5rem; /* Daha yuvarlak kenarlar */
+                        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* İç gölge */
+                    }
+
+                        .form-control:focus {
+                            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Fokuslandığında mavi kenar */
+                            border-color: #007bff;
+                        }
+
+                    .btn-primary {
+                        background-color: #007bff; /* Buton arka plan rengi */
+                        border: none; /* Kenar çizgisi yok */
+                    }
+
+                        .btn-primary:hover {
+                            background-color: #0056b3; /* Hover rengini koyulaştır */
+                        }
+
+                    .custom-modal-header {
+                        background-color: #6ca6cd; /* Yeşil arka plan */
+                        color: white; /* Beyaz yazı rengi */
+                    }
+
+                    .custom-btn3 {
+                        background-color: #6ca6cd; /* Yeşil arka plan */
+                        color: white; /* Beyaz yazı rengi */
+                        border: none; /* Kenar çizgisi yok */
+                    }
+
+                    .custom-btn4 {
+                        background-color: #eedc82; /* Yeşil arka plan */
+                        color: white; /* Beyaz yazı rengi */
+                        border: none; /* Kenar çizgisi yok */
+                    }
+
+                    .custom-btn5 {
+                        background-color: #ee2c2c; /* Yeşil arka plan */
+                        color: white; /* Beyaz yazı rengi */
+                        border: none; /* Kenar çizgisi yok */
+                    }
+
+                </style>
+
+
+            }
+        </div>
+    </div>
+</section>
